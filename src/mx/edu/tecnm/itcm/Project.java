@@ -14,8 +14,6 @@ public class Project {
     private Date startDate;
     private Date finishDate;
     private String description;
-    private Priority priority;
-    private Status progress;
 
     public Project(int id, String name, Date startDate, Date finishDate, String description, Priority priority, Status progress) {
         this.id = id;
@@ -23,8 +21,6 @@ public class Project {
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.description = description;
-        this.priority = priority;
-        this.progress = progress;
     }
 
     public int getId() {
@@ -65,21 +61,5 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Priority getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
-
-    public Status getProgress() {
-        return progress;
-    }
-
-    public void setProgress(Status progress) {
-        this.progress = progress;
     }
 }
