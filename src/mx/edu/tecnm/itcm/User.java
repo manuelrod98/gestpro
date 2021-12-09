@@ -13,7 +13,6 @@ public class User {
     private String email;
     private String password;
     private Role role;
-    private Task[] assignedTasks;
 
     public User(int id, String name, String username, String email, String password, Role role) {
         this.id = id;
