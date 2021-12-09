@@ -22,7 +22,7 @@ public class LogIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fillerWest = new javax.swing.Box.Filler(new java.awt.Dimension(25, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(25, 32767));
+        fillerWest = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(25, 32767));
         panelCenter = new javax.swing.JPanel();
         labelEmail = new javax.swing.JLabel();
         textFieldEmail = new javax.swing.JTextField();
@@ -30,14 +30,17 @@ public class LogIn extends javax.swing.JFrame {
         passwordFieldPassword = new javax.swing.JPasswordField();
         buttonLogin = new javax.swing.JButton();
         fillerEast = new javax.swing.Box.Filler(new java.awt.Dimension(25, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(25, 32767));
-        fillerFirst = new javax.swing.Box.Filler(new java.awt.Dimension(25, 0), new java.awt.Dimension(0, 50), new java.awt.Dimension(25, 32767));
+        fillerFirst = new javax.swing.Box.Filler(new java.awt.Dimension(25, 0), new java.awt.Dimension(0, 100), new java.awt.Dimension(25, 32767));
+        fillerLast = new javax.swing.Box.Filler(new java.awt.Dimension(25, 0), new java.awt.Dimension(0, 100), new java.awt.Dimension(25, 32767));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(200, 150));
+        setMaximumSize(new java.awt.Dimension(800, 800));
+        setMinimumSize(new java.awt.Dimension(350, 350));
+        setPreferredSize(new java.awt.Dimension(350, 350));
         getContentPane().add(fillerWest, java.awt.BorderLayout.WEST);
 
-        panelCenter.setMinimumSize(new java.awt.Dimension(200, 150));
-        panelCenter.setPreferredSize(new java.awt.Dimension(200, 200));
+        panelCenter.setMinimumSize(new java.awt.Dimension(290, 90));
+        panelCenter.setPreferredSize(new java.awt.Dimension(290, 90));
 
         labelEmail.setText("E-mail");
         labelEmail.setPreferredSize(new java.awt.Dimension(46, 14));
@@ -63,6 +66,7 @@ public class LogIn extends javax.swing.JFrame {
         getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
         getContentPane().add(fillerEast, java.awt.BorderLayout.EAST);
         getContentPane().add(fillerFirst, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(fillerLast, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -111,6 +115,7 @@ public class LogIn extends javax.swing.JFrame {
     private javax.swing.JButton buttonLogin;
     private javax.swing.Box.Filler fillerEast;
     private javax.swing.Box.Filler fillerFirst;
+    private javax.swing.Box.Filler fillerLast;
     private javax.swing.Box.Filler fillerWest;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelPassword;
