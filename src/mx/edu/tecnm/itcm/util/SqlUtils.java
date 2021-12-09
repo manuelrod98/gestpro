@@ -188,4 +188,8 @@ public class SqlUtils {
     public static void cretaeProject(){
         //TODO
     }
+    
+        public static void deleteProject(){
+        //TODO
+    }
 }
