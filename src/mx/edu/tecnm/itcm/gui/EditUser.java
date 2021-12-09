@@ -26,19 +26,23 @@ public class EditUser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(10, 32767));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(10, 32767));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(10, 32767));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(10, 32767));
+        panelCenter = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Edit user");
+        setMinimumSize(new java.awt.Dimension(300, 300));
+        setPreferredSize(new java.awt.Dimension(300, 300));
+        getContentPane().add(filler2, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(filler4, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(filler3, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(filler1, java.awt.BorderLayout.LINE_END);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        panelCenter.setPreferredSize(new java.awt.Dimension(260, 260));
+        getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -80,5 +84,10 @@ public class EditUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.JPanel panelCenter;
     // End of variables declaration//GEN-END:variables
 }
