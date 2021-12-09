@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package mx.edu.tecnm.itcm.gui;
 
 /**
@@ -34,8 +30,11 @@ public class LogIn extends javax.swing.JFrame {
         buttonLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(300, 200));
+        setPreferredSize(new java.awt.Dimension(600, 400));
 
-        panel.setPreferredSize(new java.awt.Dimension(400, 300));
+        panel.setMinimumSize(new java.awt.Dimension(100, 75));
+        panel.setPreferredSize(new java.awt.Dimension(600, 400));
 
         labelEmail.setText("E-mail");
         panel.add(labelEmail);
@@ -57,7 +56,7 @@ public class LogIn extends javax.swing.JFrame {
         });
         panel.add(buttonLogin);
 
-        getContentPane().add(panel, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(panel, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
