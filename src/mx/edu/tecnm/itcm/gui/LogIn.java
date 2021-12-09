@@ -26,21 +26,45 @@ public class LogIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panel = new javax.swing.JPanel();
+        labelEmail = new javax.swing.JLabel();
+        textFieldEmail = new javax.swing.JTextField();
+        labelPassword = new javax.swing.JLabel();
+        passwordFieldPassword = new javax.swing.JPasswordField();
+        buttonLogin = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        panel.setPreferredSize(new java.awt.Dimension(400, 300));
+
+        labelEmail.setText("E-mail");
+        panel.add(labelEmail);
+
+        textFieldEmail.setPreferredSize(new java.awt.Dimension(120, 20));
+        panel.add(textFieldEmail);
+
+        labelPassword.setText("Password");
+        panel.add(labelPassword);
+
+        passwordFieldPassword.setPreferredSize(new java.awt.Dimension(112, 20));
+        panel.add(passwordFieldPassword);
+
+        buttonLogin.setText("Login");
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
+        panel.add(buttonLogin);
+
+        getContentPane().add(panel, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +102,11 @@ public class LogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonLogin;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelPassword;
+    private javax.swing.JPanel panel;
+    private javax.swing.JPasswordField passwordFieldPassword;
+    private javax.swing.JTextField textFieldEmail;
     // End of variables declaration//GEN-END:variables
 }
