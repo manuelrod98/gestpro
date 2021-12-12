@@ -1,5 +1,8 @@
 package mx.edu.tecnm.itcm.gui;
 
+import javax.swing.JOptionPane;
+import mx.edu.tecnm.itcm.util.SqlUtils;
+
 /**
  *
  * @author Manuel Avila
@@ -22,37 +25,48 @@ public class SignUp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fillerNorth = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 30), new java.awt.Dimension(50, 32767));
-        fillerEast = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(50, 32767));
-        fillerWest = new javax.swing.Box.Filler(new java.awt.Dimension(30, 0), new java.awt.Dimension(30, 0), new java.awt.Dimension(50, 32767));
+        fillerFirst = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
+        fillerLast = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
+        fillerAfter = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(40, 10), new java.awt.Dimension(10, 10));
+        fillerBefore = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(40, 10), new java.awt.Dimension(10, 10));
         panelCenter = new javax.swing.JPanel();
         labelName = new javax.swing.JLabel();
         textFieldName = new javax.swing.JTextField();
         labelLastName = new javax.swing.JLabel();
         textFieldLastName = new javax.swing.JTextField();
+        labelUsername = new javax.swing.JLabel();
+        textFieldUsername = new javax.swing.JTextField();
         labelEmail = new javax.swing.JLabel();
         textFieldEmail = new javax.swing.JTextField();
         labelPassword = new javax.swing.JLabel();
         passwordFieldPassword = new javax.swing.JPasswordField();
         labelConfirmPassword = new javax.swing.JLabel();
         passwordFieldConfirmPassword = new javax.swing.JPasswordField();
+        labelRole = new javax.swing.JLabel();
         comboBoxRole = new javax.swing.JComboBox<>();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(250, 10), new java.awt.Dimension(250, 10), new java.awt.Dimension(250, 10));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(100, 0), new java.awt.Dimension(100, 0));
         buttonSignUp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sign up");
-        setPreferredSize(new java.awt.Dimension(400, 400));
-        getContentPane().add(fillerNorth, java.awt.BorderLayout.NORTH);
-        getContentPane().add(fillerEast, java.awt.BorderLayout.EAST);
-        getContentPane().add(fillerWest, java.awt.BorderLayout.WEST);
+        setTitle("Sign Up");
+        setPreferredSize(new java.awt.Dimension(440, 500));
+        getContentPane().setLayout(new java.awt.BorderLayout(5, 5));
+        getContentPane().add(fillerFirst, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(fillerLast, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(fillerAfter, java.awt.BorderLayout.LINE_END);
+        getContentPane().add(fillerBefore, java.awt.BorderLayout.WEST);
 
-        panelCenter.setPreferredSize(new java.awt.Dimension(300, 300));
+        panelCenter.setPreferredSize(new java.awt.Dimension(400, 600));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING);
+        flowLayout1.setAlignOnBaseline(true);
+        panelCenter.setLayout(flowLayout1);
 
-        labelName.setText("Name");
+        labelName.setText("Name*:");
         labelName.setPreferredSize(new java.awt.Dimension(50, 14));
         panelCenter.add(labelName);
 
-        textFieldName.setPreferredSize(new java.awt.Dimension(250, 30));
+        textFieldName.setPreferredSize(new java.awt.Dimension(300, 30));
         textFieldName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldNameActionPerformed(evt);
@@ -60,37 +74,66 @@ public class SignUp extends javax.swing.JFrame {
         });
         panelCenter.add(textFieldName);
 
-        labelLastName.setText("Last Name");
+        labelLastName.setText("Last Name*:");
+        labelLastName.setMaximumSize(new java.awt.Dimension(80, 14));
+        labelLastName.setPreferredSize(new java.awt.Dimension(70, 14));
         panelCenter.add(labelLastName);
 
-        textFieldLastName.setPreferredSize(new java.awt.Dimension(250, 30));
+        textFieldLastName.setPreferredSize(new java.awt.Dimension(300, 30));
+        textFieldLastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldLastNameActionPerformed(evt);
+            }
+        });
         panelCenter.add(textFieldLastName);
 
-        labelEmail.setText("E-mail");
+        labelUsername.setText("Username*:");
+        labelUsername.setPreferredSize(new java.awt.Dimension(70, 14));
+        panelCenter.add(labelUsername);
+
+        textFieldUsername.setPreferredSize(new java.awt.Dimension(300, 30));
+        textFieldUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldUsernameActionPerformed(evt);
+            }
+        });
+        panelCenter.add(textFieldUsername);
+
+        labelEmail.setText("E-mail*:");
         labelEmail.setPreferredSize(new java.awt.Dimension(50, 14));
         panelCenter.add(labelEmail);
 
-        textFieldEmail.setPreferredSize(new java.awt.Dimension(250, 30));
+        textFieldEmail.setPreferredSize(new java.awt.Dimension(300, 30));
         panelCenter.add(textFieldEmail);
 
-        labelPassword.setText("Password");
-        labelPassword.setPreferredSize(new java.awt.Dimension(50, 14));
+        labelPassword.setText("Password*:");
+        labelPassword.setPreferredSize(new java.awt.Dimension(70, 14));
         panelCenter.add(labelPassword);
 
-        passwordFieldPassword.setPreferredSize(new java.awt.Dimension(250, 30));
+        passwordFieldPassword.setPreferredSize(new java.awt.Dimension(300, 30));
         panelCenter.add(passwordFieldPassword);
 
-        labelConfirmPassword.setText("Confirm password");
+        labelConfirmPassword.setText("Confirm password*:");
+        labelConfirmPassword.setPreferredSize(new java.awt.Dimension(110, 14));
         panelCenter.add(labelConfirmPassword);
 
-        passwordFieldConfirmPassword.setPreferredSize(new java.awt.Dimension(250, 30));
+        passwordFieldConfirmPassword.setPreferredSize(new java.awt.Dimension(300, 30));
         panelCenter.add(passwordFieldConfirmPassword);
 
-        comboBoxRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxRole.setPreferredSize(new java.awt.Dimension(100, 23));
+        labelRole.setText("Role*:");
+        labelRole.setPreferredSize(new java.awt.Dimension(40, 14));
+        panelCenter.add(labelRole);
+
+        comboBoxRole.setMaximumRowCount(10);
+        comboBoxRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a role...", "Project Manager", "Developer" }));
+        comboBoxRole.setPreferredSize(new java.awt.Dimension(150, 25));
         panelCenter.add(comboBoxRole);
+        panelCenter.add(filler2);
+        panelCenter.add(filler1);
 
         buttonSignUp.setText("Sign up");
+        buttonSignUp.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        buttonSignUp.setPreferredSize(new java.awt.Dimension(80, 25));
         buttonSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSignUpActionPerformed(evt);
@@ -104,12 +147,39 @@ public class SignUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignUpActionPerformed
-        // TODO add your handling code here:
+        if (textFieldUsername.getText().equals("") || textFieldEmail.getText().equals("")
+                || passwordFieldPassword.getPassword().equals("")
+                || passwordFieldConfirmPassword.getPassword().equals("")
+                || textFieldName.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Rellene todos los campos");
+        } else {
+            if (passwordFieldPassword.getPassword() == passwordFieldConfirmPassword.getPassword()) {
+                SqlUtils.guardar(textFieldUsername.getText(), textFieldName.getText(), textFieldEmail.getText(),
+                        passwordFieldPassword.getText());
+                JOptionPane.showMessageDialog(this, "Usuario creado correctamente", "Usuario creado",
+                        JOptionPane.PLAIN_MESSAGE);
+                this.setVisible(false);
+                LogIn logInFrame = new LogIn();
+                logInFrame.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Verifique la contraseña", "Ha ocurrido un error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_buttonSignUpActionPerformed
 
     private void textFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldNameActionPerformed
+
+    private void textFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldUsernameActionPerformed
+
+    private void textFieldLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldLastNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,19 +219,25 @@ public class SignUp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSignUp;
     private javax.swing.JComboBox<String> comboBoxRole;
-    private javax.swing.Box.Filler fillerEast;
-    private javax.swing.Box.Filler fillerNorth;
-    private javax.swing.Box.Filler fillerWest;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler fillerAfter;
+    private javax.swing.Box.Filler fillerBefore;
+    private javax.swing.Box.Filler fillerFirst;
+    private javax.swing.Box.Filler fillerLast;
     private javax.swing.JLabel labelConfirmPassword;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelLastName;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPassword;
+    private javax.swing.JLabel labelRole;
+    private javax.swing.JLabel labelUsername;
     private javax.swing.JPanel panelCenter;
     private javax.swing.JPasswordField passwordFieldConfirmPassword;
     private javax.swing.JPasswordField passwordFieldPassword;
     private javax.swing.JTextField textFieldEmail;
     private javax.swing.JTextField textFieldLastName;
     private javax.swing.JTextField textFieldName;
+    private javax.swing.JTextField textFieldUsername;
     // End of variables declaration//GEN-END:variables
 }

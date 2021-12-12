@@ -22,45 +22,55 @@ public class LogIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fillerWest = new javax.swing.Box.Filler(new java.awt.Dimension(45, 0), new java.awt.Dimension(45, 0), new java.awt.Dimension(25, 32767));
-        fillerEast = new javax.swing.Box.Filler(new java.awt.Dimension(45, 0), new java.awt.Dimension(45, 0), new java.awt.Dimension(25, 32767));
-        fillerFirst = new javax.swing.Box.Filler(new java.awt.Dimension(0, 45), new java.awt.Dimension(0, 45), new java.awt.Dimension(25, 32767));
-        fillerLast = new javax.swing.Box.Filler(new java.awt.Dimension(0, 45), new java.awt.Dimension(0, 45), new java.awt.Dimension(25, 32767));
+        fillerWest = new javax.swing.Box.Filler(new java.awt.Dimension(45, 0), new java.awt.Dimension(25, 0), new java.awt.Dimension(25, 32767));
+        fillerEast = new javax.swing.Box.Filler(new java.awt.Dimension(45, 0), new java.awt.Dimension(25, 0), new java.awt.Dimension(25, 32767));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 25), new java.awt.Dimension(0, 25), new java.awt.Dimension(32767, 25));
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 25), new java.awt.Dimension(0, 25), new java.awt.Dimension(32767, 25));
         panelCenter = new javax.swing.JPanel();
         labelEmail = new javax.swing.JLabel();
         textFieldEmail = new javax.swing.JTextField();
         labelPassword = new javax.swing.JLabel();
         passwordFieldPassword = new javax.swing.JPasswordField();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(125, 0), new java.awt.Dimension(125, 0), new java.awt.Dimension(250, 0));
         buttonLogin = new javax.swing.JButton();
+        panelLast = new javax.swing.JPanel();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(95, 0), new java.awt.Dimension(20, 32767));
+        labelCreateAccount = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(20, 0), new java.awt.Dimension(95, 0), new java.awt.Dimension(20, 32767));
+        buttonCreateAccount = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
         setMaximumSize(new java.awt.Dimension(300, 300));
         setMinimumSize(new java.awt.Dimension(290, 290));
         setPreferredSize(new java.awt.Dimension(290, 290));
+        getContentPane().setLayout(new java.awt.BorderLayout(5, 5));
         getContentPane().add(fillerWest, java.awt.BorderLayout.WEST);
         getContentPane().add(fillerEast, java.awt.BorderLayout.EAST);
-        getContentPane().add(fillerFirst, java.awt.BorderLayout.PAGE_START);
-        getContentPane().add(fillerLast, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(filler4, java.awt.BorderLayout.PAGE_START);
+        getContentPane().add(filler5, java.awt.BorderLayout.PAGE_END);
 
         panelCenter.setMinimumSize(new java.awt.Dimension(290, 90));
         panelCenter.setPreferredSize(new java.awt.Dimension(290, 90));
+        panelCenter.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        labelEmail.setText("E-mail");
-        labelEmail.setPreferredSize(new java.awt.Dimension(50, 14));
+        labelEmail.setText("E-mail:");
+        labelEmail.setPreferredSize(new java.awt.Dimension(43, 14));
         panelCenter.add(labelEmail);
 
-        textFieldEmail.setPreferredSize(new java.awt.Dimension(250, 30));
+        textFieldEmail.setPreferredSize(new java.awt.Dimension(300, 30));
         panelCenter.add(textFieldEmail);
 
-        labelPassword.setText("Password");
-        labelPassword.setPreferredSize(new java.awt.Dimension(75, 14));
+        labelPassword.setText("Password:");
+        labelPassword.setPreferredSize(new java.awt.Dimension(70, 14));
         panelCenter.add(labelPassword);
 
-        passwordFieldPassword.setPreferredSize(new java.awt.Dimension(250, 30));
+        passwordFieldPassword.setPreferredSize(new java.awt.Dimension(300, 30));
         panelCenter.add(passwordFieldPassword);
+        panelCenter.add(filler1);
 
         buttonLogin.setText("Login");
+        buttonLogin.setPreferredSize(new java.awt.Dimension(67, 25));
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLoginActionPerformed(evt);
@@ -70,12 +80,36 @@ public class LogIn extends javax.swing.JFrame {
 
         getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
 
+        panelLast.setPreferredSize(new java.awt.Dimension(212, 70));
+        panelLast.add(filler3);
+
+        labelCreateAccount.setText("No tienes una cuenta?");
+        panelLast.add(labelCreateAccount);
+        panelLast.add(filler2);
+
+        buttonCreateAccount.setText("Create account");
+        buttonCreateAccount.setPreferredSize(new java.awt.Dimension(117, 25));
+        buttonCreateAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreateAccountActionPerformed(evt);
+            }
+        });
+        panelLast.add(buttonCreateAccount);
+
+        getContentPane().add(panelLast, java.awt.BorderLayout.PAGE_END);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonLoginActionPerformed
+
+    private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
+        SignUp signUpFrame = new SignUp();
+        signUpFrame.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_buttonCreateAccountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,14 +148,20 @@ public class LogIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCreateAccount;
     private javax.swing.JButton buttonLogin;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler fillerEast;
-    private javax.swing.Box.Filler fillerFirst;
-    private javax.swing.Box.Filler fillerLast;
     private javax.swing.Box.Filler fillerWest;
+    private javax.swing.JLabel labelCreateAccount;
     private javax.swing.JLabel labelEmail;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelLast;
     private javax.swing.JPasswordField passwordFieldPassword;
     private javax.swing.JTextField textFieldEmail;
     // End of variables declaration//GEN-END:variables

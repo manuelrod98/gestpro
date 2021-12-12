@@ -40,7 +40,7 @@ public class SqlUtils {
 
         } catch (Exception ex) {
 //            System.out.println(ex);
-            JOptionPane.showMessageDialog(null,  ex, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
         return resultado;
     }
@@ -184,12 +184,11 @@ public class SqlUtils {
 //            System.out.println(e);
 //        }
 //    }
-    
-    public static void cretaeProject(){
-        //TODO
+    public static void cretaeProject() {
+        //TODO:
     }
-    
-        public static void deleteProject(){
-        //TODO
+
+    public static void deleteProject() {
+        //TODO:
     }
 }
