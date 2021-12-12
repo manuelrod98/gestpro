@@ -9,6 +9,7 @@ import java.util.Date;
  * @author Manuel Avila
  */
 public class Project {
+
     private int id;
     private String name;
     private Date startDate;

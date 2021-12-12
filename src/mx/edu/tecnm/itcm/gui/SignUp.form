@@ -140,9 +140,6 @@
               <Dimension value="[300, 30]"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldNameActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelLastName">
           <Properties>
@@ -161,9 +158,6 @@
               <Dimension value="[300, 30]"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldLastNameActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelUsername">
           <Properties>

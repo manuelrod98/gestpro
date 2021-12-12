@@ -7,6 +7,7 @@ import mx.edu.tecnm.itcm.util.Role;
  * @author Manuel Avila
  */
 public class User {
+
     private int id;
     private String name;
     private String username;

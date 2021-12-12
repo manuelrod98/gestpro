@@ -6,10 +6,10 @@ package mx.edu.tecnm.itcm;
  */
 @Deprecated
 public class Team {
+
     private int id;
     private String name;
     private User[] members;
-    
 
     public Team() {
     }

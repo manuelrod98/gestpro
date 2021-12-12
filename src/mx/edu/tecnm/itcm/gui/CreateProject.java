@@ -26,19 +26,167 @@ public class CreateProject extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelCenter = new javax.swing.JPanel();
+        labelStartDate = new javax.swing.JLabel();
+        dateChooserStartDate = new com.toedter.calendar.JDateChooser();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(60, 32767));
+        labelFinishDate = new javax.swing.JLabel();
+        dateChooserFinishDate = new com.toedter.calendar.JDateChooser();
+        jSeparator1 = new javax.swing.JSeparator();
+        panelFirst = new javax.swing.JPanel();
+        labelName = new javax.swing.JLabel();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(225, 0), new java.awt.Dimension(50, 32767));
+        textFieldName = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        panelLast = new javax.swing.JPanel();
+        labelDescription = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(425, 0), new java.awt.Dimension(50, 32767));
+        scrollPaneDescription = new javax.swing.JScrollPane();
+        textAreaDescription = new javax.swing.JTextArea();
+        panelAfter = new javax.swing.JPanel();
+        panelBefore = new javax.swing.JPanel();
+        panelNorth = new javax.swing.JPanel();
+        panelSouth = new javax.swing.JPanel();
+        panelEast = new javax.swing.JPanel();
+        panelWest = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Create project");
+        setMinimumSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(800, 800));
+        getContentPane().setLayout(new java.awt.BorderLayout(5, 5));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        panelCenter.setPreferredSize(new java.awt.Dimension(800, 100));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING);
+        flowLayout1.setAlignOnBaseline(true);
+        panelCenter.setLayout(flowLayout1);
+
+        labelStartDate.setText("Start date: ");
+        panelCenter.add(labelStartDate);
+
+        dateChooserStartDate.setPreferredSize(new java.awt.Dimension(200, 30));
+        panelCenter.add(dateChooserStartDate);
+        panelCenter.add(filler1);
+
+        labelFinishDate.setText("Finish date: ");
+        panelCenter.add(labelFinishDate);
+
+        dateChooserFinishDate.setPreferredSize(new java.awt.Dimension(200, 30));
+        panelCenter.add(dateChooserFinishDate);
+
+        jSeparator1.setPreferredSize(new java.awt.Dimension(600, 5));
+        panelCenter.add(jSeparator1);
+
+        getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
+
+        panelFirst.setPreferredSize(new java.awt.Dimension(50, 100));
+
+        labelName.setText("Project name: ");
+        panelFirst.add(labelName);
+        panelFirst.add(filler3);
+
+        textFieldName.setPreferredSize(new java.awt.Dimension(300, 30));
+        panelFirst.add(textFieldName);
+
+        jSeparator2.setPreferredSize(new java.awt.Dimension(600, 5));
+        panelFirst.add(jSeparator2);
+
+        getContentPane().add(panelFirst, java.awt.BorderLayout.PAGE_START);
+
+        panelLast.setPreferredSize(new java.awt.Dimension(500, 250));
+
+        labelDescription.setText("Description: ");
+        panelLast.add(labelDescription);
+        panelLast.add(filler2);
+
+        scrollPaneDescription.setPreferredSize(new java.awt.Dimension(500, 200));
+
+        textAreaDescription.setColumns(20);
+        textAreaDescription.setRows(5);
+        textAreaDescription.setPreferredSize(new java.awt.Dimension(500, 300));
+        scrollPaneDescription.setViewportView(textAreaDescription);
+
+        panelLast.add(scrollPaneDescription);
+
+        getContentPane().add(panelLast, java.awt.BorderLayout.PAGE_END);
+
+        javax.swing.GroupLayout panelAfterLayout = new javax.swing.GroupLayout(panelAfter);
+        panelAfter.setLayout(panelAfterLayout);
+        panelAfterLayout.setHorizontalGroup(
+            panelAfterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelAfterLayout.setVerticalGroup(
+            panelAfterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        getContentPane().add(panelAfter, java.awt.BorderLayout.LINE_END);
+
+        javax.swing.GroupLayout panelBeforeLayout = new javax.swing.GroupLayout(panelBefore);
+        panelBefore.setLayout(panelBeforeLayout);
+        panelBeforeLayout.setHorizontalGroup(
+            panelBeforeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelBeforeLayout.setVerticalGroup(
+            panelBeforeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panelBefore, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout panelNorthLayout = new javax.swing.GroupLayout(panelNorth);
+        panelNorth.setLayout(panelNorthLayout);
+        panelNorthLayout.setHorizontalGroup(
+            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelNorthLayout.setVerticalGroup(
+            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panelNorth, java.awt.BorderLayout.NORTH);
+
+        javax.swing.GroupLayout panelSouthLayout = new javax.swing.GroupLayout(panelSouth);
+        panelSouth.setLayout(panelSouthLayout);
+        panelSouthLayout.setHorizontalGroup(
+            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelSouthLayout.setVerticalGroup(
+            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panelSouth, java.awt.BorderLayout.SOUTH);
+
+        javax.swing.GroupLayout panelEastLayout = new javax.swing.GroupLayout(panelEast);
+        panelEast.setLayout(panelEastLayout);
+        panelEastLayout.setHorizontalGroup(
+            panelEastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelEastLayout.setVerticalGroup(
+            panelEastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panelEast, java.awt.BorderLayout.EAST);
+
+        javax.swing.GroupLayout panelWestLayout = new javax.swing.GroupLayout(panelWest);
+        panelWest.setLayout(panelWestLayout);
+        panelWestLayout.setHorizontalGroup(
+            panelWestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        panelWestLayout.setVerticalGroup(
+            panelWestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panelWest, java.awt.BorderLayout.WEST);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +227,28 @@ public class CreateProject extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser dateChooserFinishDate;
+    private com.toedter.calendar.JDateChooser dateChooserStartDate;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel labelDescription;
+    private javax.swing.JLabel labelFinishDate;
+    private javax.swing.JLabel labelName;
+    private javax.swing.JLabel labelStartDate;
+    private javax.swing.JPanel panelAfter;
+    private javax.swing.JPanel panelBefore;
+    private javax.swing.JPanel panelCenter;
+    private javax.swing.JPanel panelEast;
+    private javax.swing.JPanel panelFirst;
+    private javax.swing.JPanel panelLast;
+    private javax.swing.JPanel panelNorth;
+    private javax.swing.JPanel panelSouth;
+    private javax.swing.JPanel panelWest;
+    private javax.swing.JScrollPane scrollPaneDescription;
+    private javax.swing.JTextArea textAreaDescription;
+    private javax.swing.JTextField textFieldName;
     // End of variables declaration//GEN-END:variables
 }

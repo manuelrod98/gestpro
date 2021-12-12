@@ -67,11 +67,6 @@ public class SignUp extends javax.swing.JFrame {
         panelCenter.add(labelName);
 
         textFieldName.setPreferredSize(new java.awt.Dimension(300, 30));
-        textFieldName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldNameActionPerformed(evt);
-            }
-        });
         panelCenter.add(textFieldName);
 
         labelLastName.setText("Last Name*:");
@@ -80,11 +75,6 @@ public class SignUp extends javax.swing.JFrame {
         panelCenter.add(labelLastName);
 
         textFieldLastName.setPreferredSize(new java.awt.Dimension(300, 30));
-        textFieldLastName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldLastNameActionPerformed(evt);
-            }
-        });
         panelCenter.add(textFieldLastName);
 
         labelUsername.setText("Username*:");
@@ -169,17 +159,9 @@ public class SignUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonSignUpActionPerformed
 
-    private void textFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldNameActionPerformed
-
     private void textFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldUsernameActionPerformed
-
-    private void textFieldLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldLastNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldLastNameActionPerformed
 
     /**
      * @param args the command line arguments
