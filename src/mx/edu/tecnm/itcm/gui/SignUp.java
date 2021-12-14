@@ -143,8 +143,8 @@ public class SignUp extends javax.swing.JFrame {
                 || textFieldName.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Rellene todos los campos");
         } else {
-            if (passwordFieldPassword.getPassword() == passwordFieldConfirmPassword.getPassword()) {
-                SqlUtils.guardar(textFieldUsername.getText(), textFieldName.getText(), textFieldEmail.getText(),
+            if (passwordFieldPassword.getText() == passwordFieldConfirmPassword.getText()) {
+                SqlUtils.registerUser(textFieldUsername.getText(), textFieldName.getText(), textFieldEmail.getText(),
                         passwordFieldPassword.getText());
                 JOptionPane.showMessageDialog(this, "Usuario creado correctamente", "Usuario creado",
                         JOptionPane.PLAIN_MESSAGE);

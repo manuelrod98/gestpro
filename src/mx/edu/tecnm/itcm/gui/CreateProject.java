@@ -4,6 +4,8 @@
  */
 package mx.edu.tecnm.itcm.gui;
 
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author Manuel Avila
@@ -32,32 +34,24 @@ public class CreateProject extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(60, 0), new java.awt.Dimension(50, 0), new java.awt.Dimension(60, 32767));
         labelFinishDate = new javax.swing.JLabel();
         dateChooserFinishDate = new com.toedter.calendar.JDateChooser();
-        jSeparator1 = new javax.swing.JSeparator();
+        labelDescription = new javax.swing.JLabel();
+        scrollPaneDescription = new javax.swing.JScrollPane();
+        textAreaDescription = new javax.swing.JTextArea();
+        buttonCreateProject = new javax.swing.JButton();
+        buttonCancel = new javax.swing.JButton();
         panelFirst = new javax.swing.JPanel();
         labelName = new javax.swing.JLabel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(225, 0), new java.awt.Dimension(50, 32767));
         textFieldName = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        panelLast = new javax.swing.JPanel();
-        labelDescription = new javax.swing.JLabel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(425, 0), new java.awt.Dimension(50, 32767));
-        scrollPaneDescription = new javax.swing.JScrollPane();
-        textAreaDescription = new javax.swing.JTextArea();
-        panelAfter = new javax.swing.JPanel();
-        panelBefore = new javax.swing.JPanel();
-        panelNorth = new javax.swing.JPanel();
-        panelSouth = new javax.swing.JPanel();
-        panelEast = new javax.swing.JPanel();
-        panelWest = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Create project");
         setMinimumSize(new java.awt.Dimension(600, 600));
-        setPreferredSize(new java.awt.Dimension(800, 800));
-        getContentPane().setLayout(new java.awt.BorderLayout(5, 5));
+        setPreferredSize(new java.awt.Dimension(640, 640));
+        getContentPane().setLayout(new java.awt.BorderLayout(10, 10));
 
         panelCenter.setPreferredSize(new java.awt.Dimension(800, 100));
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING);
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 20);
         flowLayout1.setAlignOnBaseline(true);
         panelCenter.setLayout(flowLayout1);
 
@@ -74,30 +68,8 @@ public class CreateProject extends javax.swing.JFrame {
         dateChooserFinishDate.setPreferredSize(new java.awt.Dimension(200, 30));
         panelCenter.add(dateChooserFinishDate);
 
-        jSeparator1.setPreferredSize(new java.awt.Dimension(600, 5));
-        panelCenter.add(jSeparator1);
-
-        getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
-
-        panelFirst.setPreferredSize(new java.awt.Dimension(50, 100));
-
-        labelName.setText("Project name: ");
-        panelFirst.add(labelName);
-        panelFirst.add(filler3);
-
-        textFieldName.setPreferredSize(new java.awt.Dimension(300, 30));
-        panelFirst.add(textFieldName);
-
-        jSeparator2.setPreferredSize(new java.awt.Dimension(600, 5));
-        panelFirst.add(jSeparator2);
-
-        getContentPane().add(panelFirst, java.awt.BorderLayout.PAGE_START);
-
-        panelLast.setPreferredSize(new java.awt.Dimension(500, 250));
-
         labelDescription.setText("Description: ");
-        panelLast.add(labelDescription);
-        panelLast.add(filler2);
+        panelCenter.add(labelDescription);
 
         scrollPaneDescription.setPreferredSize(new java.awt.Dimension(500, 200));
 
@@ -106,90 +78,44 @@ public class CreateProject extends javax.swing.JFrame {
         textAreaDescription.setPreferredSize(new java.awt.Dimension(500, 300));
         scrollPaneDescription.setViewportView(textAreaDescription);
 
-        panelLast.add(scrollPaneDescription);
+        panelCenter.add(scrollPaneDescription);
 
-        getContentPane().add(panelLast, java.awt.BorderLayout.PAGE_END);
+        buttonCreateProject.setText("Create");
+        buttonCreateProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreateProjectActionPerformed(evt);
+            }
+        });
+        panelCenter.add(buttonCreateProject);
 
-        javax.swing.GroupLayout panelAfterLayout = new javax.swing.GroupLayout(panelAfter);
-        panelAfter.setLayout(panelAfterLayout);
-        panelAfterLayout.setHorizontalGroup(
-            panelAfterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelAfterLayout.setVerticalGroup(
-            panelAfterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        buttonCancel.setText("Cancelar");
+        panelCenter.add(buttonCancel);
 
-        getContentPane().add(panelAfter, java.awt.BorderLayout.LINE_END);
+        getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout panelBeforeLayout = new javax.swing.GroupLayout(panelBefore);
-        panelBefore.setLayout(panelBeforeLayout);
-        panelBeforeLayout.setHorizontalGroup(
-            panelBeforeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelBeforeLayout.setVerticalGroup(
-            panelBeforeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        panelFirst.setPreferredSize(new java.awt.Dimension(50, 100));
+        java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 10, 10);
+        flowLayout2.setAlignOnBaseline(true);
+        panelFirst.setLayout(flowLayout2);
 
-        getContentPane().add(panelBefore, java.awt.BorderLayout.LINE_START);
+        labelName.setText("Project name: ");
+        panelFirst.add(labelName);
+        panelFirst.add(filler3);
 
-        javax.swing.GroupLayout panelNorthLayout = new javax.swing.GroupLayout(panelNorth);
-        panelNorth.setLayout(panelNorthLayout);
-        panelNorthLayout.setHorizontalGroup(
-            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelNorthLayout.setVerticalGroup(
-            panelNorthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+        textFieldName.setPreferredSize(new java.awt.Dimension(300, 30));
+        panelFirst.add(textFieldName);
 
-        getContentPane().add(panelNorth, java.awt.BorderLayout.NORTH);
-
-        javax.swing.GroupLayout panelSouthLayout = new javax.swing.GroupLayout(panelSouth);
-        panelSouth.setLayout(panelSouthLayout);
-        panelSouthLayout.setHorizontalGroup(
-            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelSouthLayout.setVerticalGroup(
-            panelSouthLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelSouth, java.awt.BorderLayout.SOUTH);
-
-        javax.swing.GroupLayout panelEastLayout = new javax.swing.GroupLayout(panelEast);
-        panelEast.setLayout(panelEastLayout);
-        panelEastLayout.setHorizontalGroup(
-            panelEastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelEastLayout.setVerticalGroup(
-            panelEastLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelEast, java.awt.BorderLayout.EAST);
-
-        javax.swing.GroupLayout panelWestLayout = new javax.swing.GroupLayout(panelWest);
-        panelWest.setLayout(panelWestLayout);
-        panelWestLayout.setHorizontalGroup(
-            panelWestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelWestLayout.setVerticalGroup(
-            panelWestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panelWest, java.awt.BorderLayout.WEST);
+        getContentPane().add(panelFirst, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonCreateProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateProjectActionPerformed
+        String fecha;
+        java.util.Date date = new java.util.Date();
+        SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
+        fecha=simpleFormat.format(dateChooserStartDate.getDate());
+    }//GEN-LAST:event_buttonCreateProjectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,26 +153,18 @@ public class CreateProject extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonCancel;
+    private javax.swing.JButton buttonCreateProject;
     private com.toedter.calendar.JDateChooser dateChooserFinishDate;
     private com.toedter.calendar.JDateChooser dateChooserStartDate;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelDescription;
     private javax.swing.JLabel labelFinishDate;
     private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelStartDate;
-    private javax.swing.JPanel panelAfter;
-    private javax.swing.JPanel panelBefore;
     private javax.swing.JPanel panelCenter;
-    private javax.swing.JPanel panelEast;
     private javax.swing.JPanel panelFirst;
-    private javax.swing.JPanel panelLast;
-    private javax.swing.JPanel panelNorth;
-    private javax.swing.JPanel panelSouth;
-    private javax.swing.JPanel panelWest;
     private javax.swing.JScrollPane scrollPaneDescription;
     private javax.swing.JTextArea textAreaDescription;
     private javax.swing.JTextField textFieldName;
