@@ -41,10 +41,11 @@ public class SqlUtils {
         try {
             connection = DBConnection.connect();
             preparedStatement = connection.prepareStatement("INSERT INTO t_user(username, uName, uEmail, uPassword) VALUES(?, ?, ?, ?)");
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getName());
-            preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setString(4, user.getPassword());
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setString(3, user.getUsername());
+            preparedStatement.setString(4, user.getEmail());
+            preparedStatement.setString(5, user.getPassword());
             resultado = preparedStatement.executeUpdate();
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
