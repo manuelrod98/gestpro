@@ -137,14 +137,15 @@ public class SignUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignUpActionPerformed
-        if (textFieldUsername.getText().equals("") || textFieldEmail.getText().equals("")
+        if (textFieldUsername.getText().equals("") 
+                || textFieldEmail.getText().equals("")
                 || passwordFieldPassword.getPassword().equals("")
                 || passwordFieldConfirmPassword.getPassword().equals("")
                 || textFieldName.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Rellene todos los campos");
         } else {
-            if (passwordFieldPassword.getText() == passwordFieldConfirmPassword.getText()) {
-                SqlUtils.registerUser(textFieldUsername.getText(), textFieldName.getText(), textFieldEmail.getText(),
+            if (passwordFieldPassword.getText().equals(passwordFieldConfirmPassword.getText())) {
+                SqlUtils.registerUser(textFieldName.getText(), textFieldLastName.getText(), textFieldUsername.getText(), textFieldEmail.getText(),
                         passwordFieldPassword.getText());
                 JOptionPane.showMessageDialog(this, "Usuario creado correctamente", "Usuario creado",
                         JOptionPane.PLAIN_MESSAGE);

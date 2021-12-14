@@ -17,21 +17,22 @@ public class SqlUtils {
     public static String sqlQuery;
     public static int resultIndex = 0;
 
-    public static int registerUser(String username, String name, String email, String password) {
+    public static void registerUser(String name, String lastName, String username, String email, String password) {
         int resultado = 0;
         Connection connection = null;
         try {
             connection = DBConnection.connect();
-            preparedStatement = connection.prepareStatement("INSERT INTO t_user(username, uName, uEmail, uPassword) VALUES(?, ?, ?, ?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO tbl_user(uName, uLastName, username, uEmail, uPassword) VALUES(?, ?, ?, ?)");
             preparedStatement.setString(1, name);
-            preparedStatement.setString(2, name);
-            preparedStatement.setString(3, email);
-            preparedStatement.setString(4, password);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, username);
+            preparedStatement.setString(4, email);
+            preparedStatement.setString(5, password);
             resultado = preparedStatement.executeUpdate();
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
-        return resultado;
+//        return resultado;
     }
 
     public static void registerUser(User user) {

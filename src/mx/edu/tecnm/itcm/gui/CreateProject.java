@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package mx.edu.tecnm.itcm.gui;
 
 import java.text.SimpleDateFormat;
@@ -114,7 +110,7 @@ public class CreateProject extends javax.swing.JFrame {
         String fecha;
         java.util.Date date = new java.util.Date();
         SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd");
-        fecha=simpleFormat.format(dateChooserStartDate.getDate());
+        fecha = simpleFormat.format(dateChooserStartDate.getDate());
     }//GEN-LAST:event_buttonCreateProjectActionPerformed
 
     /**
