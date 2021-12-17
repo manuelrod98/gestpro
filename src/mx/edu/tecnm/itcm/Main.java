@@ -1,6 +1,6 @@
 package mx.edu.tecnm.itcm;
 
-import mx.edu.tecnm.itcm.gui.LogIn;
+import mx.edu.tecnm.itcm.gui.SignIn;
 
 /**
  *
@@ -12,7 +12,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LogIn loginFrame = new LogIn();
+        SignIn loginFrame = new SignIn();
         loginFrame.setVisible(true);
     }
 

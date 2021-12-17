@@ -10,7 +10,6 @@ public class Team {
     private String name;
     private User[] members;
     
-
     public Team() {
     }
 
