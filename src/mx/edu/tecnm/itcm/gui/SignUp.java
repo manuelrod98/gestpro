@@ -28,7 +28,7 @@ public class SignUp extends javax.swing.JFrame {
         fillerFirst = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
         fillerLast = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
         fillerAfter = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(40, 10), new java.awt.Dimension(10, 10));
-        fillerBefore = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(40, 10), new java.awt.Dimension(10, 10));
+        fillerBefore = new javax.swing.Box.Filler(new java.awt.Dimension(40, 10), new java.awt.Dimension(20, 10), new java.awt.Dimension(40, 10));
         panelCenter = new javax.swing.JPanel();
         labelName = new javax.swing.JLabel();
         textFieldName = new javax.swing.JTextField();
@@ -82,11 +82,6 @@ public class SignUp extends javax.swing.JFrame {
         panelCenter.add(labelUsername);
 
         textFieldUsername.setPreferredSize(new java.awt.Dimension(300, 30));
-        textFieldUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldUsernameActionPerformed(evt);
-            }
-        });
         panelCenter.add(textFieldUsername);
 
         labelEmail.setText("E-mail*:");
@@ -150,7 +145,7 @@ public class SignUp extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Usuario creado correctamente", "Usuario creado",
                         JOptionPane.PLAIN_MESSAGE);
                 this.setVisible(false);
-                LogIn logInFrame = new LogIn();
+                SignIn logInFrame = new SignIn();
                 logInFrame.setVisible(true);
 
             } else {
@@ -159,10 +154,6 @@ public class SignUp extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_buttonSignUpActionPerformed
-
-    private void textFieldUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldUsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,8 +182,8 @@ public class SignUp extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new SignUp().setVisible(true);
             }

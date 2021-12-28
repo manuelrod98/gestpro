@@ -4,12 +4,12 @@ package mx.edu.tecnm.itcm.gui;
  *
  * @author Manuel Avila
  */
-public class LogIn extends javax.swing.JFrame {
+public class SignIn extends javax.swing.JFrame {
 
     /**
      * Creates new form LogIn
      */
-    public LogIn() {
+    public SignIn() {
         initComponents();
     }
 
@@ -40,10 +40,8 @@ public class LogIn extends javax.swing.JFrame {
         buttonCreateAccount = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Login");
-        setMaximumSize(new java.awt.Dimension(300, 300));
+        setTitle("Sign In");
         setMinimumSize(new java.awt.Dimension(290, 290));
-        setPreferredSize(new java.awt.Dimension(290, 290));
         getContentPane().setLayout(new java.awt.BorderLayout(5, 5));
         getContentPane().add(fillerWest, java.awt.BorderLayout.WEST);
         getContentPane().add(fillerEast, java.awt.BorderLayout.EAST);
@@ -69,8 +67,8 @@ public class LogIn extends javax.swing.JFrame {
         panelCenter.add(passwordFieldPassword);
         panelCenter.add(filler1);
 
-        buttonLogin.setText("Login");
-        buttonLogin.setPreferredSize(new java.awt.Dimension(67, 25));
+        buttonLogin.setText("Sign in");
+        buttonLogin.setPreferredSize(new java.awt.Dimension(80, 25));
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLoginActionPerformed(evt);
@@ -128,21 +126,22 @@ public class LogIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LogIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new LogIn().setVisible(true);
+                new SignIn().setVisible(true);
             }
         });
     }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package mx.edu.tecnm.itcm.gui;
 
 /**
@@ -26,19 +22,87 @@ public class CreateTask extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(75, 0), new java.awt.Dimension(50, 32767));
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(75, 0), new java.awt.Dimension(50, 32767));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(50, 0), new java.awt.Dimension(60, 0), new java.awt.Dimension(50, 32767));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 30), new java.awt.Dimension(32767, 50));
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 50), new java.awt.Dimension(0, 25), new java.awt.Dimension(32767, 50));
+        panelCenter = new javax.swing.JPanel();
+        labelTaskName = new javax.swing.JLabel();
+        textFieldName = new javax.swing.JTextField();
+        labelStartDate = new javax.swing.JLabel();
+        dateChooserStartDate = new com.toedter.calendar.JDateChooser();
+        labelFinishDate = new javax.swing.JLabel();
+        dateChooserFinishDate = new com.toedter.calendar.JDateChooser();
+        labelPriority = new javax.swing.JLabel();
+        comboBoxPriority = new javax.swing.JComboBox<>();
+        labelDescription = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        labelChooseUser = new javax.swing.JLabel();
+        comboBoxChooseUser = new javax.swing.JComboBox<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Create task");
+        setMinimumSize(new java.awt.Dimension(400, 400));
+        setPreferredSize(new java.awt.Dimension(500, 500));
+        getContentPane().setLayout(new java.awt.BorderLayout(5, 5));
+        getContentPane().add(filler1, java.awt.BorderLayout.EAST);
+        getContentPane().add(filler5, java.awt.BorderLayout.LINE_START);
+        getContentPane().add(filler2, java.awt.BorderLayout.WEST);
+        getContentPane().add(filler3, java.awt.BorderLayout.NORTH);
+        getContentPane().add(filler4, java.awt.BorderLayout.SOUTH);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        panelCenter.setPreferredSize(new java.awt.Dimension(390, 390));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEADING);
+        flowLayout1.setAlignOnBaseline(true);
+        panelCenter.setLayout(flowLayout1);
+
+        labelTaskName.setText("Task name");
+        panelCenter.add(labelTaskName);
+
+        textFieldName.setPreferredSize(new java.awt.Dimension(310, 28));
+        panelCenter.add(textFieldName);
+
+        labelStartDate.setText("Start date");
+        panelCenter.add(labelStartDate);
+
+        dateChooserStartDate.setPreferredSize(new java.awt.Dimension(150, 27));
+        panelCenter.add(dateChooserStartDate);
+
+        labelFinishDate.setText("Finish date");
+        panelCenter.add(labelFinishDate);
+
+        dateChooserFinishDate.setPreferredSize(new java.awt.Dimension(150, 27));
+        panelCenter.add(dateChooserFinishDate);
+
+        labelPriority.setText("Priority");
+        panelCenter.add(labelPriority);
+
+        comboBoxPriority.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxPriority.setPreferredSize(new java.awt.Dimension(122, 25));
+        panelCenter.add(comboBoxPriority);
+
+        labelDescription.setText("Description");
+        panelCenter.add(labelDescription);
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(400, 200));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setPreferredSize(new java.awt.Dimension(400, 200));
+        jScrollPane1.setViewportView(jTextArea1);
+
+        panelCenter.add(jScrollPane1);
+
+        labelChooseUser.setText("Choose user");
+        panelCenter.add(labelChooseUser);
+
+        comboBoxChooseUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxChooseUser.setPreferredSize(new java.awt.Dimension(100, 25));
+        panelCenter.add(comboBoxChooseUser);
+
+        getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +143,24 @@ public class CreateTask extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBoxChooseUser;
+    private javax.swing.JComboBox<String> comboBoxPriority;
+    private com.toedter.calendar.JDateChooser dateChooserFinishDate;
+    private com.toedter.calendar.JDateChooser dateChooserStartDate;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel labelChooseUser;
+    private javax.swing.JLabel labelDescription;
+    private javax.swing.JLabel labelFinishDate;
+    private javax.swing.JLabel labelPriority;
+    private javax.swing.JLabel labelStartDate;
+    private javax.swing.JLabel labelTaskName;
+    private javax.swing.JPanel panelCenter;
+    private javax.swing.JTextField textFieldName;
     // End of variables declaration//GEN-END:variables
 }

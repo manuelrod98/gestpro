@@ -1,9 +1,11 @@
 package mx.edu.tecnm.itcm.util;
 
+import datechooser.beans.DateChooserPanel;
 import java.sql.*;
 
 import mx.edu.tecnm.itcm.User;
 import javax.swing.JOptionPane;
+import mx.edu.tecnm.itcm.Project;
 
 /**
  *
@@ -108,11 +110,30 @@ public class SqlUtils {
         return isFinded;
     }
 
-    public static void cretaeProject() {
-        //TODO:
+    public static void cretaeProject(Project project) {
+        int resultado = 0;
+        Connection connection = null;
+        try {
+            connection = DBConnection.connect();
+            preparedStatement = connection.prepareStatement("INSERT INTO tbl_project(pName, startDate, finishDate, description) VALUES(?, ?, ?, ?)");
+            preparedStatement.setString(1, project.getName());
+            preparedStatement.setDate(2, (java.sql.Date) project.getStartDate());
+            preparedStatement.setDate(3, (java.sql.Date) project.getFinishDate());
+            preparedStatement.setString(4, project.getDescription());
+            resultado = preparedStatement.executeUpdate();
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public static void deleteProject() {
         //TODO:
+    }
+
+    public static Date convertDate(DateChooserPanel dateChooser) {
+        Date date = (Date) dateChooser.getCurrent().getTime();
+        long d = date.getTime();
+        java.sql.Date fecha = new java.sql.Date(d);
+        return fecha;
     }
 }
