@@ -1,7 +1,7 @@
 package mx.edu.tecnm.itcm.util;
 
-import datechooser.beans.DateChooserPanel;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 import mx.edu.tecnm.itcm.User;
 import javax.swing.JOptionPane;
@@ -13,32 +13,30 @@ import mx.edu.tecnm.itcm.Project;
  */
 public class SqlUtils {
 
-    public static DBConnection databaseConnection = new DBConnection();
-    public static PreparedStatement preparedStatement;
-    public static ResultSet resultSet;
-    public static String sqlQuery;
-    public static int resultIndex = 0;
+    private static DBConnection dbConnection = new DBConnection();
+    private static PreparedStatement preparedStatement;
+    private static ResultSet resultSet;
+    private static String sqlQuery;
 
     public static void registerUser(String name, String lastName, String username, String email, String password) {
-        int resultado = 0;
         Connection connection = null;
+        User user = new User(name, lastName, username, email, password);
         try {
             connection = DBConnection.connect();
-            preparedStatement = connection.prepareStatement("INSERT INTO tbl_user(uName, uLastName, username, uEmail, uPassword) VALUES(?, ?, ?, ?)");
-            preparedStatement.setString(1, name);
-            preparedStatement.setString(2, lastName);
-            preparedStatement.setString(3, username);
-            preparedStatement.setString(4, email);
-            preparedStatement.setString(5, password);
-            resultado = preparedStatement.executeUpdate();
-        } catch (Exception exception) {
+            preparedStatement = connection.prepareStatement("INSERT INTO tbl_user(uName, uLastName, uUsername, uEmail, uPassword) VALUES(?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getLastName());
+            preparedStatement.setString(3, user.getUsername());
+            preparedStatement.setString(4, user.getEmail());
+            preparedStatement.setString(5, user.getPassword());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
-//        return resultado;
     }
 
     public static void registerUser(User user) {
-        int resultado = 0;
         Connection connection = null;
         try {
             connection = DBConnection.connect();
@@ -48,8 +46,9 @@ public class SqlUtils {
             preparedStatement.setString(3, user.getUsername());
             preparedStatement.setString(4, user.getEmail());
             preparedStatement.setString(5, user.getPassword());
-            resultado = preparedStatement.executeUpdate();
-        } catch (Exception exception) {
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -68,7 +67,7 @@ public class SqlUtils {
                 busqueda_usuario = (name);
             }
             connection.close();
-        } catch (Exception exception) {
+        } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
         return busqueda_usuario;
@@ -85,43 +84,49 @@ public class SqlUtils {
             preparedStatement.setDate(3, finishDate);
             preparedStatement.setString(4, description);
             result = preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
         return result;
     }
 
-    public boolean buscarUsuarioRegistrado(User user) {
-        boolean isFinded = false;
+    public static boolean login(User user) {
         Connection connection = null;
         try {
             connection = DBConnection.connect();
-            String SqlQuery = ("SELECT username, name, email, password FROM user WHERE username = '" + user.getUsername() + "' && password = '" + user.getPassword() + "'");
+            String SqlQuery = ("SELECT id, uName, uLastName, uUsername, uEmail, uPassword FROM tbl_user WHERE uUsername = ?");
             preparedStatement = connection.prepareStatement(SqlQuery);
+            preparedStatement.setString(1, user.getUsername());
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                isFinded = true;
+                if (user.getPassword().equals(resultSet.getString(6))) {
+                    user.setId(resultSet.getInt(1));
+                    user.setName(resultSet.getString(2));
+                    preparedStatement.close();
+                    return true;
+                }
             } else {
-                isFinded = false;
+                return false;
             }
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
-        return isFinded;
+        return false;
     }
 
-    public static void cretaeProject(Project project) {
-        int resultado = 0;
+    public static void createProject(Project project) {
         Connection connection = null;
         try {
             connection = DBConnection.connect();
-            preparedStatement = connection.prepareStatement("INSERT INTO tbl_project(pName, startDate, finishDate, description) VALUES(?, ?, ?, ?)");
+            preparedStatement = connection.prepareStatement("INSERT INTO tbl_project(pName, pDesc, startDate, finishDate) VALUES(?, ?, ?, ?)");
             preparedStatement.setString(1, project.getName());
-            preparedStatement.setDate(2, (java.sql.Date) project.getStartDate());
-            preparedStatement.setDate(3, (java.sql.Date) project.getFinishDate());
-            preparedStatement.setString(4, project.getDescription());
-            resultado = preparedStatement.executeUpdate();
-        } catch (Exception exception) {
+            preparedStatement.setString(2, project.getDescription());
+            preparedStatement.setDate(3, utilDateToSqlDate(project.getStartDate()));
+            preparedStatement.setDate(4, utilDateToSqlDate(project.getFinishDate()));
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -130,10 +135,10 @@ public class SqlUtils {
         //TODO:
     }
 
-    public static Date convertDate(DateChooserPanel dateChooser) {
-        Date date = (Date) dateChooser.getCurrent().getTime();
-        long d = date.getTime();
-        java.sql.Date fecha = new java.sql.Date(d);
-        return fecha;
+    private static java.sql.Date utilDateToSqlDate(java.util.Date date) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String formattedDate = simpleDateFormat.format(date);
+        java.sql.Date convertedDate = java.sql.Date.valueOf(formattedDate);
+        return convertedDate;
     }
 }

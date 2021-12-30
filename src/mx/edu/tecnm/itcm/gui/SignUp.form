@@ -128,7 +128,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="labelName">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Name*:"/>
+            <Property name="text" type="java.lang.String" value="Name *:"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[50, 14]"/>
             </Property>
@@ -143,7 +143,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelLastName">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Last Name*:"/>
+            <Property name="text" type="java.lang.String" value="Last Name *:"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 14]"/>
             </Property>
@@ -161,7 +161,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelUsername">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Username*:"/>
+            <Property name="text" type="java.lang.String" value="Username *:"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[70, 14]"/>
             </Property>
@@ -176,7 +176,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelEmail">
           <Properties>
-            <Property name="text" type="java.lang.String" value="E-mail*:"/>
+            <Property name="text" type="java.lang.String" value="E-mail *:"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[50, 14]"/>
             </Property>
@@ -191,7 +191,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelPassword">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Password*:"/>
+            <Property name="text" type="java.lang.String" value="Password *:"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[70, 14]"/>
             </Property>
@@ -206,7 +206,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelConfirmPassword">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Confirm password*:"/>
+            <Property name="text" type="java.lang.String" value="Confirm password *:"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[110, 14]"/>
             </Property>
@@ -221,7 +221,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelRole">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Role*:"/>
+            <Property name="text" type="java.lang.String" value="Role *:"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[40, 14]"/>
             </Property>

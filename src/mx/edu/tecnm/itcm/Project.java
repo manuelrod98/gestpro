@@ -1,7 +1,5 @@
 package mx.edu.tecnm.itcm;
 
-import mx.edu.tecnm.itcm.util.Priority;
-import mx.edu.tecnm.itcm.util.Status;
 import java.util.Date;
 
 /**
@@ -16,8 +14,7 @@ public class Project {
     private Date finishDate;
     private String description;
 
-    public Project(int id, String name, Date startDate, Date finishDate, String description, Priority priority, Status progress) {
-        this.id = id;
+    public Project(String name, Date startDate, Date finishDate, String description) {
         this.name = name;
         this.startDate = startDate;
         this.finishDate = finishDate;

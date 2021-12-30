@@ -1,5 +1,9 @@
 package mx.edu.tecnm.itcm.gui;
 
+import javax.swing.JOptionPane;
+import mx.edu.tecnm.itcm.User;
+import mx.edu.tecnm.itcm.util.SqlUtils;
+
 /**
  *
  * @author Manuel Avila
@@ -100,7 +104,19 @@ public class SignIn extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-        // TODO add your handling code here:
+        User user = new User();
+        if (!textFieldEmail.getText().equals("") && !passwordFieldPassword.getText().equals("")) {
+            user.setUsername(textFieldEmail.getText());
+            user.setPassword(passwordFieldPassword.getText());
+            if (SqlUtils.login(user)) {
+                Home home = new Home();
+                home.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Error al iniciar sesion", JOptionPane.ERROR_MESSAGE);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Rellene todos los campos", "Hay campos vacios", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
