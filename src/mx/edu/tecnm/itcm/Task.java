@@ -15,20 +15,36 @@ public class Task {
     private Date finishDate;
     private String description;
     private Project ownerProject;
+    private User user;
     private Priority priority;
-    private Status progress;
+    private Status status;
 
     public Task() {
     }
 
-    public Task(int id, String name, Date startDate, Date finishDate, String description, Priority priority, Status progress) {
-        this.id = id;
+    public Task(String name, String description, Date startDate, Date finishDate,  User user, Project project) {
         this.name = name;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.description = description;
-        this.priority = priority;
-        this.progress = progress;
+        this.user = user;
+        this.ownerProject = project;
+    }
+
+    public Project getOwnerProject() {
+        return ownerProject;
+    }
+
+    public void setOwnerProject(Project ownerProject) {
+        this.ownerProject = ownerProject;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public int getId() {
@@ -71,8 +87,8 @@ public class Task {
         return priority;
     }
 
-    public Status getProgress() {
-        return progress;
+    public Status getStatus() {
+        return status;
     }
 
     public void setDescription(String description) {
@@ -81,9 +97,5 @@ public class Task {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
-    }
-
-    public void setProgress(Status progress) {
-        this.progress = progress;
     }
 }

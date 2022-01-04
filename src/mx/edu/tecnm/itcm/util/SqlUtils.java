@@ -2,10 +2,15 @@ package mx.edu.tecnm.itcm.util;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 import mx.edu.tecnm.itcm.User;
 import javax.swing.JOptionPane;
 import mx.edu.tecnm.itcm.Project;
+import mx.edu.tecnm.itcm.Task;
 
 /**
  *
@@ -16,7 +21,6 @@ public class SqlUtils {
     private static DBConnection dbConnection = new DBConnection();
     private static PreparedStatement preparedStatement;
     private static ResultSet resultSet;
-    private static String sqlQuery;
 
     public static void registerUser(String name, String lastName, String username, String email, String password) {
         Connection connection = null;
@@ -32,7 +36,7 @@ public class SqlUtils {
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -49,7 +53,7 @@ public class SqlUtils {
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -68,7 +72,7 @@ public class SqlUtils {
             }
             connection.close();
         } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
         return busqueda_usuario;
     }
@@ -86,7 +90,7 @@ public class SqlUtils {
             result = preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
         return result;
     }
@@ -110,7 +114,7 @@ public class SqlUtils {
                 return false;
             }
         } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
         return false;
     }
@@ -127,12 +131,26 @@ public class SqlUtils {
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException exception) {
-            JOptionPane.showMessageDialog(null, exception, "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public static void deleteProject() {
-        //TODO:
+    public static void createTask(Task task) {
+        Connection connection = null;
+        try {
+            connection = DBConnection.connect();
+            preparedStatement = connection.prepareStatement("INSERT INTO tbl_task(tName, tDesc, startDate, finishDate, id_user, id_project) VALUES(?, ?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, task.getName());
+            preparedStatement.setString(2, task.getDescription());
+            preparedStatement.setDate(3, utilDateToSqlDate(task.getStartDate()));
+            preparedStatement.setDate(4, utilDateToSqlDate(task.getFinishDate()));
+            preparedStatement.setInt(5, task.getUser().getId());
+            preparedStatement.setInt(6, task.getOwnerProject().getId());
+            preparedStatement.executeUpdate();
+            preparedStatement.close();
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private static java.sql.Date utilDateToSqlDate(java.util.Date date) {
@@ -140,5 +158,52 @@ public class SqlUtils {
         String formattedDate = simpleDateFormat.format(date);
         java.sql.Date convertedDate = java.sql.Date.valueOf(formattedDate);
         return convertedDate;
+    }
+
+    public static ArrayList<User> getUserList() {
+        Connection connection = DBConnection.connect();
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        ArrayList<User> userList = new ArrayList();
+
+
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM tbl_user");
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                User user = new User(resultSet.getString("uName"), resultSet.getString("uLastName"), resultSet.getString("uUsername"), resultSet.getString("uEmail"), resultSet.getString("uPassword"));
+                user.setId(resultSet.getInt("id"));
+                userList.add(user);
+            }
+
+            resultSet.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlUtils.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return userList;
+    }
+    
+    
+        public static ArrayList<Project> getProjectList() {
+        Connection connection = DBConnection.connect();
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
+        ArrayList<Project> projectList = new ArrayList<>();
+
+
+        try {
+            preparedStatement = connection.prepareStatement("SELECT * FROM tbl_project");
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Project project = new Project(resultSet.getString("pName"),  resultSet.getDate("startDate"), resultSet.getDate("finishDate"), resultSet.getString("pDesc"));
+                project.setId(resultSet.getInt("id"));
+                projectList.add(project);
+            }
+
+            resultSet.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SqlUtils.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return projectList;
     }
 }

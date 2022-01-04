@@ -1,8 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package mx.edu.tecnm.itcm.gui;
+
+import java.sql.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfPTable;
+import java.io.FileOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import mx.edu.tecnm.itcm.util.DBConnection;
 
 /**
  *
@@ -26,22 +32,181 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jPanel1 = new javax.swing.JPanel();
+        scrollPaneProjects = new javax.swing.JScrollPane();
+        tableProjects = new javax.swing.JTable();
+        scrollPaneTasks = new javax.swing.JScrollPane();
+        tableTasks = new javax.swing.JTable();
+        scrollPaneUsers = new javax.swing.JScrollPane();
+        tableUsers = new javax.swing.JTable();
+        buttonGenerateReport = new javax.swing.JButton();
+        buttonRefresh = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
+        setPreferredSize(new java.awt.Dimension(550, 600));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        jScrollPane4.setPreferredSize(new java.awt.Dimension(600, 600));
+
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 600));
+
+        scrollPaneProjects.setPreferredSize(new java.awt.Dimension(452, 189));
+
+        tableProjects.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Start Date", "Finish Date", "Description"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        scrollPaneProjects.setViewportView(tableProjects);
+
+        jPanel1.add(scrollPaneProjects);
+
+        scrollPaneTasks.setPreferredSize(new java.awt.Dimension(452, 189));
+
+        tableTasks.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Description", "Start Date", "Finish Date", "Assidgned user", "Owner project"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scrollPaneTasks.setViewportView(tableTasks);
+
+        jPanel1.add(scrollPaneTasks);
+
+        scrollPaneUsers.setPreferredSize(new java.awt.Dimension(452, 189));
+
+        tableUsers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Last Name", "Username", "Email"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        scrollPaneUsers.setViewportView(tableUsers);
+
+        jPanel1.add(scrollPaneUsers);
+
+        buttonGenerateReport.setText("Generate report");
+        buttonGenerateReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGenerateReportActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonGenerateReport);
+
+        buttonRefresh.setText("Refresh");
+        buttonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRefreshActionPerformed(evt);
+            }
+        });
+        jPanel1.add(buttonRefresh);
+
+        jScrollPane4.setViewportView(jPanel1);
+
+        getContentPane().add(jScrollPane4, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateReportActionPerformed
+        Document document = new Document();
+        try {
+            String route = System.getProperty("user.home");
+            PdfWriter.getInstance(document, new FileOutputStream(route + "/Desktop/Reporte.pdf"));
+            document.open();
+        } catch (Exception e) {
+
+        }
+    }//GEN-LAST:event_buttonGenerateReportActionPerformed
+
+    private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshActionPerformed
+        try {
+            PreparedStatement ps;
+            ResultSet rs;
+            DBConnection dbConn = new DBConnection();
+            Connection conn = dbConn.connect();
+            ps = conn.prepareStatement("SELECT * FROM tbl_project");
+            rs = ps.executeQuery();
+            ResultSetMetaData rSMD = rs.getMetaData();
+            int colsCant = rSMD.getColumnCount();
+        } catch (SQLException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_buttonRefreshActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,6 +237,7 @@ public class Home extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Home().setVisible(true);
             }
@@ -79,5 +245,15 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonGenerateReport;
+    private javax.swing.JButton buttonRefresh;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane scrollPaneProjects;
+    private javax.swing.JScrollPane scrollPaneTasks;
+    private javax.swing.JScrollPane scrollPaneUsers;
+    private javax.swing.JTable tableProjects;
+    private javax.swing.JTable tableTasks;
+    private javax.swing.JTable tableUsers;
     // End of variables declaration//GEN-END:variables
 }

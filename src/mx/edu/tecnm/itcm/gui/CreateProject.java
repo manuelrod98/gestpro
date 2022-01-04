@@ -1,7 +1,5 @@
 package mx.edu.tecnm.itcm.gui;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import mx.edu.tecnm.itcm.Project;
 import mx.edu.tecnm.itcm.util.SqlUtils;
@@ -126,6 +124,11 @@ public class CreateProject extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonOKActionPerformed
 
+    private boolean thereAreEmptyFields() {
+        return textFieldProjectName.getText().equals("") || textAreaDescription.getText().equals("")
+                || dateChooserStartDate.getDate() == null || dateChooserFinishDate.getDate() == null;
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -180,9 +183,4 @@ public class CreateProject extends javax.swing.JFrame {
     private javax.swing.JTextArea textAreaDescription;
     private javax.swing.JTextField textFieldProjectName;
     // End of variables declaration//GEN-END:variables
-
-    private boolean thereAreEmptyFields() {
-        return textFieldProjectName.getText().equals("") || textAreaDescription.getText().equals("")
-                || dateChooserStartDate.getDate() == null || dateChooserFinishDate.getDate() == null;
-    }
 }

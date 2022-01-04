@@ -14,11 +14,19 @@ public class Project {
     private Date finishDate;
     private String description;
 
+    public Project() {
+
+    }
+
     public Project(String name, Date startDate, Date finishDate, String description) {
         this.name = name;
         this.startDate = startDate;
         this.finishDate = finishDate;
         this.description = description;
+    }
+
+    public Project(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -59,5 +67,10 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

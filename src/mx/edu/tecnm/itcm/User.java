@@ -37,6 +37,10 @@ public class User {
         this.role = Role.DEVELOPER;
     }
 
+    public User(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -91,5 +95,10 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return getName() + getLastName();
     }
 }
