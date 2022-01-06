@@ -108,7 +108,7 @@ public class SignIn extends javax.swing.JFrame {
         if (!textFieldEmail.getText().equals("") && !passwordFieldPassword.getText().equals("")) {
             user.setUsername(textFieldEmail.getText());
             user.setPassword(passwordFieldPassword.getText());
-            if (SqlUtils.login(user)) {
+            if (SqlUtils.signIn(user)) {
                 Home home = new Home();
                 home.setVisible(true);
             } else {

@@ -26,10 +26,10 @@ public class CreateTask extends javax.swing.JFrame {
         comboBoxChooseUser.removeAllItems();
         ArrayList<User> userList = SqlUtils.getUserList();
         for (int i = 0; i < userList.size(); i++) {
-            comboBoxChooseUser.addItem(new User(userList.get(i).getName()));
+            comboBoxChooseUser.addItem(new User(userList.get(i).getName(), userList.get(i).getLastName()));
         }
     }
-    
+
     private void fillProjectList() {
         comboBoxSelectProject.removeAllItems();
         ArrayList<Project> projectList = SqlUtils.getProjectList();
@@ -70,8 +70,8 @@ public class CreateTask extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Create task");
-        setMinimumSize(new java.awt.Dimension(400, 400));
-        setPreferredSize(new java.awt.Dimension(500, 500));
+        setMinimumSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new java.awt.BorderLayout(5, 5));
 
         panelCenter.setPreferredSize(new java.awt.Dimension(390, 390));
@@ -82,7 +82,7 @@ public class CreateTask extends javax.swing.JFrame {
         labelTaskName.setText("Task name:");
         panelCenter.add(labelTaskName);
 
-        textFieldTaskName.setPreferredSize(new java.awt.Dimension(310, 28));
+        textFieldTaskName.setPreferredSize(new java.awt.Dimension(200, 28));
         panelCenter.add(textFieldTaskName);
 
         labelStartDate.setText("Start date:");
@@ -100,13 +100,13 @@ public class CreateTask extends javax.swing.JFrame {
         labelChooseUser.setText("Choose user:");
         panelCenter.add(labelChooseUser);
 
-        comboBoxChooseUser.setPreferredSize(new java.awt.Dimension(100, 25));
+        comboBoxChooseUser.setPreferredSize(new java.awt.Dimension(200, 25));
         panelCenter.add(comboBoxChooseUser);
 
         jLabel1.setText("Select project");
         panelCenter.add(jLabel1);
 
-        comboBoxSelectProject.setPreferredSize(new java.awt.Dimension(100, 24));
+        comboBoxSelectProject.setPreferredSize(new java.awt.Dimension(200, 24));
         panelCenter.add(comboBoxSelectProject);
 
         labelDescription.setText("Description:");
@@ -122,6 +122,7 @@ public class CreateTask extends javax.swing.JFrame {
         panelCenter.add(scrollPane);
 
         buttonOK.setText("OK");
+        buttonOK.setPreferredSize(new java.awt.Dimension(70, 25));
         buttonOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonOKActionPerformed(evt);
@@ -130,6 +131,7 @@ public class CreateTask extends javax.swing.JFrame {
         panelCenter.add(buttonOK);
 
         buttonCancel.setText("Cancel");
+        buttonCancel.setPreferredSize(new java.awt.Dimension(70, 25));
         panelCenter.add(buttonCancel);
 
         getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
@@ -142,14 +144,14 @@ public class CreateTask extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOKActionPerformed
-        Task task = new Task(textFieldTaskName.getText(), textAreaDescription.getText(), dateChooserStartDate.getDate(), dateChooserFinishDate.getDate(), (User) comboBoxChooseUser.getSelectedItem(), (Project) comboBoxSelectProject.getSelectedItem());
+        Task task = new Task(textFieldTaskName.getText(), dateChooserStartDate.getDate(), dateChooserFinishDate.getDate(), textAreaDescription.getText(), (User) comboBoxChooseUser.getSelectedItem(), (Project) comboBoxSelectProject.getSelectedItem());
         if (thereAreEmptyFields()) {
             JOptionPane.showMessageDialog(this, "Rellene todos los campos", "Hay campos vacios", JOptionPane.ERROR_MESSAGE);
         } else {
             SqlUtils.createTask(task);
+            this.setVisible(false);
             JOptionPane.showMessageDialog(this, "Tarea creada correctamente", "Tarea creada",
                     JOptionPane.PLAIN_MESSAGE);
-            this.setVisible(false);
             Home home = new Home();
             home.setVisible(true);
         }

@@ -5,9 +5,12 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.PdfPTable;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import mx.edu.tecnm.itcm.util.DBConnection;
 
 /**
@@ -32,8 +35,8 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
+        scrollPane = new javax.swing.JScrollPane();
+        panel = new javax.swing.JPanel();
         scrollPaneProjects = new javax.swing.JScrollPane();
         tableProjects = new javax.swing.JTable();
         scrollPaneTasks = new javax.swing.JScrollPane();
@@ -41,15 +44,16 @@ public class Home extends javax.swing.JFrame {
         scrollPaneUsers = new javax.swing.JScrollPane();
         tableUsers = new javax.swing.JTable();
         buttonGenerateReport = new javax.swing.JButton();
-        buttonRefresh = new javax.swing.JButton();
+        buttonRefreshProjects = new javax.swing.JButton();
+        buttonRefreshTasks = new javax.swing.JButton();
+        buttonRefreshUsers = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Home");
-        setPreferredSize(new java.awt.Dimension(550, 600));
 
-        jScrollPane4.setPreferredSize(new java.awt.Dimension(600, 600));
+        scrollPane.setPreferredSize(new java.awt.Dimension(600, 600));
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(600, 600));
+        panel.setPreferredSize(new java.awt.Dimension(600, 600));
 
         scrollPaneProjects.setPreferredSize(new java.awt.Dimension(452, 189));
 
@@ -73,14 +77,21 @@ public class Home extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         scrollPaneProjects.setViewportView(tableProjects);
 
-        jPanel1.add(scrollPaneProjects);
+        panel.add(scrollPaneProjects);
 
         scrollPaneTasks.setPreferredSize(new java.awt.Dimension(452, 189));
 
@@ -118,7 +129,7 @@ public class Home extends javax.swing.JFrame {
         });
         scrollPaneTasks.setViewportView(tableTasks);
 
-        jPanel1.add(scrollPaneTasks);
+        panel.add(scrollPaneTasks);
 
         scrollPaneUsers.setPreferredSize(new java.awt.Dimension(452, 189));
 
@@ -143,7 +154,7 @@ public class Home extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -156,7 +167,7 @@ public class Home extends javax.swing.JFrame {
         });
         scrollPaneUsers.setViewportView(tableUsers);
 
-        jPanel1.add(scrollPaneUsers);
+        panel.add(scrollPaneUsers);
 
         buttonGenerateReport.setText("Generate report");
         buttonGenerateReport.addActionListener(new java.awt.event.ActionListener() {
@@ -164,19 +175,35 @@ public class Home extends javax.swing.JFrame {
                 buttonGenerateReportActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonGenerateReport);
+        panel.add(buttonGenerateReport);
 
-        buttonRefresh.setText("Refresh");
-        buttonRefresh.addActionListener(new java.awt.event.ActionListener() {
+        buttonRefreshProjects.setText("Refresh projects");
+        buttonRefreshProjects.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRefreshActionPerformed(evt);
+                buttonRefreshProjectsActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonRefresh);
+        panel.add(buttonRefreshProjects);
 
-        jScrollPane4.setViewportView(jPanel1);
+        buttonRefreshTasks.setText("Refresh tasks");
+        buttonRefreshTasks.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRefreshTasksActionPerformed(evt);
+            }
+        });
+        panel.add(buttonRefreshTasks);
 
-        getContentPane().add(jScrollPane4, java.awt.BorderLayout.PAGE_START);
+        buttonRefreshUsers.setText("Refresh users");
+        buttonRefreshUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonRefreshUsersActionPerformed(evt);
+            }
+        });
+        panel.add(buttonRefreshUsers);
+
+        scrollPane.setViewportView(panel);
+
+        getContentPane().add(scrollPane, java.awt.BorderLayout.PAGE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,26 +214,98 @@ public class Home extends javax.swing.JFrame {
             String route = System.getProperty("user.home");
             PdfWriter.getInstance(document, new FileOutputStream(route + "/Desktop/Reporte.pdf"));
             document.open();
-        } catch (Exception e) {
+        } catch (DocumentException | FileNotFoundException e) {
 
         }
     }//GEN-LAST:event_buttonGenerateReportActionPerformed
 
-    private void buttonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshActionPerformed
+    private void buttonRefreshProjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshProjectsActionPerformed
         try {
+            DefaultTableModel model = new DefaultTableModel();
+            tableProjects.setModel(model);
             PreparedStatement ps;
             ResultSet rs;
             DBConnection dbConn = new DBConnection();
             Connection conn = dbConn.connect();
-            ps = conn.prepareStatement("SELECT * FROM tbl_project");
+            ps = conn.prepareStatement("SELECT * FROM project");
             rs = ps.executeQuery();
             ResultSetMetaData rSMD = rs.getMetaData();
-            int colsCant = rSMD.getColumnCount();
+            int colCant = rSMD.getColumnCount();
+            Object[] rows = new Object[colCant];
+            model.addColumn("ID");
+            model.addColumn("Name");
+            model.addColumn("Description");
+            model.addColumn("Start Date");
+            model.addColumn("Finish Date");
+            while (rs.next()) {
+                for (int i = 0; i < colCant; i++) {
+                    rows[i] = rs.getObject(i + 1);
+                }
+                model.addRow(rows);
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Ha ocurrido un error", JOptionPane.INFORMATION_MESSAGE);
         }
+    }//GEN-LAST:event_buttonRefreshProjectsActionPerformed
 
-    }//GEN-LAST:event_buttonRefreshActionPerformed
+    private void buttonRefreshTasksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshTasksActionPerformed
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            tableTasks.setModel(model);
+            PreparedStatement ps;
+            ResultSet rs;
+            DBConnection dbConn = new DBConnection();
+            Connection conn = dbConn.connect();
+            ps = conn.prepareStatement("SELECT * FROM task");
+            rs = ps.executeQuery();
+            ResultSetMetaData rSMD = rs.getMetaData();
+            int colCant = rSMD.getColumnCount();
+            Object[] rows = new Object[colCant];
+            model.addColumn("ID");
+            model.addColumn("Name");
+            model.addColumn("Description");
+            model.addColumn("Start Date");
+            model.addColumn("Finish Date");
+            model.addColumn("Assigned user");
+            model.addColumn("Owner project");
+            while (rs.next()) {
+                for (int i = 0; i < colCant; i++) {
+                    rows[i] = rs.getObject(i + 1);
+                }
+                model.addRow(rows);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Ha ocurrido un error", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonRefreshTasksActionPerformed
+
+    private void buttonRefreshUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshUsersActionPerformed
+        try {
+            DefaultTableModel model = new DefaultTableModel();
+            tableUsers.setModel(model);
+            PreparedStatement ps;
+            ResultSet rs;
+            Connection conn = DBConnection.connect();
+            ps = conn.prepareStatement("SELECT * FROM user");
+            rs = ps.executeQuery();
+            ResultSetMetaData rSMD = rs.getMetaData();
+            int colCant = rSMD.getColumnCount();
+            Object[] rows = new Object[colCant];
+            model.addColumn("ID");
+            model.addColumn("Name");
+            model.addColumn("Last Name");
+            model.addColumn("Username");
+            model.addColumn("Email");
+            while (rs.next()) {
+                for (int i = 0; i < colCant; i++) {
+                    rows[i] = rs.getObject(i + 1);
+                }
+                model.addRow(rows);
+            }
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_buttonRefreshUsersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,9 +345,11 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonGenerateReport;
-    private javax.swing.JButton buttonRefresh;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JButton buttonRefreshProjects;
+    private javax.swing.JButton buttonRefreshTasks;
+    private javax.swing.JButton buttonRefreshUsers;
+    private javax.swing.JPanel panel;
+    private javax.swing.JScrollPane scrollPane;
     private javax.swing.JScrollPane scrollPaneProjects;
     private javax.swing.JScrollPane scrollPaneTasks;
     private javax.swing.JScrollPane scrollPaneUsers;

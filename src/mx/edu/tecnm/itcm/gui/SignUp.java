@@ -1,6 +1,7 @@
 package mx.edu.tecnm.itcm.gui;
 
 import javax.swing.JOptionPane;
+import mx.edu.tecnm.itcm.User;
 import mx.edu.tecnm.itcm.util.SqlUtils;
 
 /**
@@ -127,12 +128,13 @@ public class SignUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignUpActionPerformed
-        if (thereEmptyFields()) {
+        User user = new User(textFieldName.getText(), textFieldLastName.getText(), textFieldUsername.getText(), textFieldEmail.getText(),
+                        passwordFieldPassword.getText()); 
+        if (thereAreEmptyFields()) {
             JOptionPane.showMessageDialog(this, "Rellene todos los campos");
         } else {
             if (matchPasword()) {
-                SqlUtils.registerUser(textFieldName.getText(), textFieldLastName.getText(), textFieldUsername.getText(), textFieldEmail.getText(),
-                        passwordFieldPassword.getText());
+                SqlUtils.signUp(user);
                 JOptionPane.showMessageDialog(this, "Usuario creado correctamente", "Usuario creado",
                         JOptionPane.PLAIN_MESSAGE);
                 this.setVisible(false);
@@ -145,7 +147,7 @@ public class SignUp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonSignUpActionPerformed
 
-    private boolean thereEmptyFields() {
+    private boolean thereAreEmptyFields() {
         return textFieldUsername.getText().equals("")
                 || textFieldEmail.getText().equals("")
                 || passwordFieldPassword.getPassword().equals("")

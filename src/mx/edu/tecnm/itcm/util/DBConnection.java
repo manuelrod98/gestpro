@@ -1,8 +1,6 @@
 package mx.edu.tecnm.itcm.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 import javax.swing.JOptionPane;
 
@@ -11,19 +9,25 @@ import javax.swing.JOptionPane;
  * @author Manuel Avila
  */
 public class DBConnection {
-    private static String url = "jdbc:mysql://localhost/maindb";
-    private static String user = "root";
-    private static String password = "SAdi6j8SgWJW(@f";
+    
+    private static Connection connection = null;
 
     public static Connection connect() {
-        Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = (Connection) DriverManager.getConnection(url, user, password);
-            JOptionPane.showMessageDialog(null, "Conexion establecida", "Conexion establecida correctamente", JOptionPane.PLAIN_MESSAGE);
-        } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ha ocurrido un error", "No se ha podido establecer una conexion con la base de datos", JOptionPane.ERROR_MESSAGE);
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/maindb", "root", "SAdi6j8SgWJW(@f");
+            JOptionPane.showMessageDialog(null, "Conexion establecida", "Conexion establecida correctamente", JOptionPane.INFORMATION_MESSAGE);
+        } catch (ClassNotFoundException | SQLException exception) {
+            JOptionPane.showMessageDialog(null, "Ha ocurrido un error", exception.getMessage(), JOptionPane.ERROR_MESSAGE);
         }
         return connection;
+    }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void disconnect() {
+        connection = null;
     }
 }

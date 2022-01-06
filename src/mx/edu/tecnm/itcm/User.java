@@ -1,7 +1,5 @@
 package mx.edu.tecnm.itcm;
 
-import mx.edu.tecnm.itcm.util.Role;
-
 /**
  *
  * @author Manuel Avila
@@ -14,18 +12,8 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private Role role;
 
     public User() {
-    }
-
-    public User(String name, String lastName, String username, String email, String password, Role role) {
-        this.name = name;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.role = role;
     }
 
     public User(String name, String lastName, String username, String email, String password) {
@@ -34,11 +22,24 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.role = Role.DEVELOPER;
+    }
+
+    public User(int id, String name, String lastName, String username, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
     }
 
     public User(String name) {
         this.name = name;
+    }
+
+    public User(String name, String lastName) {
+        this.name = name;
+        this.lastName = lastName;
     }
 
     public int getId() {
@@ -89,16 +90,8 @@ public class User {
         this.password = password;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
     @Override
     public String toString() {
-        return getName() + getLastName();
+        return getName() + " " + getLastName();
     }
 }

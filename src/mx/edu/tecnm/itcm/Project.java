@@ -25,6 +25,14 @@ public class Project {
         this.description = description;
     }
 
+    public Project(int id, String name, Date startDate, Date finishDate, String description) {
+        this.id = id;
+        this.name = name;
+        this.startDate = startDate;
+        this.finishDate = finishDate;
+        this.description = description;
+    }
+
     public Project(String name) {
         this.name = name;
     }
