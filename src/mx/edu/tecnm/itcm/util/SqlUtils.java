@@ -67,9 +67,9 @@ public class SqlUtils {
             connection = DBConnection.connect();
             preparedStatement = connection.prepareStatement("INSERT INTO project(project_name, startDate, finishDate, description) VALUES(?, ?, ?, ?)");
             preparedStatement.setString(1, project.getName());
-            preparedStatement.setString(2, project.getDescription());
-            preparedStatement.setDate(3, utilDateToSqlDate(project.getStartDate()));
-            preparedStatement.setDate(4, utilDateToSqlDate(project.getFinishDate()));
+            preparedStatement.setDate(2, utilDateToSqlDate(project.getStartDate()));
+            preparedStatement.setDate(3, utilDateToSqlDate(project.getFinishDate()));
+            preparedStatement.setString(4, project.getDescription());
             preparedStatement.executeUpdate();
             preparedStatement.close();
         } catch (SQLException exception) {
@@ -108,7 +108,7 @@ public class SqlUtils {
             preparedStatement = connection.prepareStatement("SELECT * FROM user");
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                User user = new User(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("lastName"), resultSet.getString("username"), resultSet.getString("email"), resultSet.getString("password"));
+                User user = new User(resultSet.getInt("id_user"), resultSet.getString("name"), resultSet.getString("lastName"), resultSet.getString("username"), resultSet.getString("email"), resultSet.getString("password"));
                 userList.add(user);
             }
             resultSet.close();
@@ -125,7 +125,7 @@ public class SqlUtils {
             preparedStatement = connection.prepareStatement("SELECT * FROM project");
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Project project = new Project(resultSet.getInt("id"), resultSet.getString("project_name"), resultSet.getDate("startDate"), resultSet.getDate("finishDate"), resultSet.getString("description"));
+                Project project = new Project(resultSet.getInt("id_project"), resultSet.getString("project_name"), resultSet.getDate("startDate"), resultSet.getDate("finishDate"), resultSet.getString("description"));
                 projectList.add(project);
             }
             resultSet.close();

@@ -26,7 +26,7 @@ public class CreateTask extends javax.swing.JFrame {
         comboBoxChooseUser.removeAllItems();
         ArrayList<User> userList = SqlUtils.getUserList();
         for (int i = 0; i < userList.size(); i++) {
-            comboBoxChooseUser.addItem(new User(userList.get(i).getName(), userList.get(i).getLastName()));
+            comboBoxChooseUser.addItem(new User(userList.get(i).getId(), userList.get(i).getName(), userList.get(i).getLastName()));
         }
     }
 
@@ -34,7 +34,7 @@ public class CreateTask extends javax.swing.JFrame {
         comboBoxSelectProject.removeAllItems();
         ArrayList<Project> projectList = SqlUtils.getProjectList();
         for (int i = 0; i < projectList.size(); i++) {
-            comboBoxSelectProject.addItem(new Project(projectList.get(i).getName()));
+            comboBoxSelectProject.addItem(new Project(projectList.get(i).getId(), projectList.get(i).getName()));
         }
     }
 
@@ -144,7 +144,7 @@ public class CreateTask extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOKActionPerformed
-        Task task = new Task(textFieldTaskName.getText(), dateChooserStartDate.getDate(), dateChooserFinishDate.getDate(), textAreaDescription.getText(), (User) comboBoxChooseUser.getSelectedItem(), (Project) comboBoxSelectProject.getSelectedItem());
+        Task task = new Task(textFieldTaskName.getText(), dateChooserStartDate.getDate(), dateChooserFinishDate.getDate(), textAreaDescription.getText(), comboBoxChooseUser.getItemAt(comboBoxChooseUser.getSelectedIndex()), comboBoxSelectProject.getItemAt(comboBoxSelectProject.getSelectedIndex()));
         if (thereAreEmptyFields()) {
             JOptionPane.showMessageDialog(this, "Rellene todos los campos", "Hay campos vacios", JOptionPane.ERROR_MESSAGE);
         } else {

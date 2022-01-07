@@ -42,6 +42,12 @@ public class User {
         this.lastName = lastName;
     }
 
+    public User(int id, String name, String lastName) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+    }
+
     public int getId() {
         return id;
     }
