@@ -14,7 +14,8 @@ public class User {
 
     public User() {
         this.name="";
-        this.lastName=""
+        this.lastName="";
+        this.username="";
     }
 
     public User(String name, String lastName, String username, String email, String password) {
