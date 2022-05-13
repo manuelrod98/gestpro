@@ -5,7 +5,6 @@ package mx.edu.tecnm.itcm;
  * @author Manuel Avila
  */
 public class User {
-
     private int id;
     private String name;
     private String lastName;
@@ -14,6 +13,8 @@ public class User {
     private String password;
 
     public User() {
+        this.name="";
+        this.lastName=""
     }
 
     public User(String name, String lastName, String username, String email, String password) {
