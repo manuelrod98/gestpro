@@ -20,8 +20,6 @@ public class Task {
         this.startDate = new Date();
         this.finishDate = new Date();
         this.description = description;
-        this.user = user;
-        this.ownerProject = project;
     }
 
     public Task(String name, Date startDate, Date finishDate, String description, User user, Project project) {
