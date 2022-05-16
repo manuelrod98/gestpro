@@ -3,6 +3,7 @@ package mx.edu.tecnm.itcm;
 import java.util.Date;
 
 /**
+ *
  * @author Manuel Avila
  */
 public class Task {

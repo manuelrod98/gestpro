@@ -110,6 +110,6 @@ public class User {
 
     @Override
     public String toString() {
-        return getName() + " " + getLastName();
+        return name + " " + lastName;
     }
 }

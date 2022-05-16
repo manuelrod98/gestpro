@@ -17,10 +17,7 @@ public class SignUp extends javax.swing.JFrame {
         initComponents();
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         fillerFirst = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
         fillerLast = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10), new java.awt.Dimension(10, 10));
         fillerAfter = new javax.swing.Box.Filler(new java.awt.Dimension(10, 10), new java.awt.Dimension(40, 10), new java.awt.Dimension(10, 10));
@@ -125,8 +122,7 @@ public class SignUp extends javax.swing.JFrame {
         getContentPane().add(panelCenter, java.awt.BorderLayout.CENTER);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
-
+    }
     private void buttonSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignUpActionPerformed
         User user = new User(textFieldName.getText(), textFieldLastName.getText(), textFieldUsername.getText(), textFieldEmail.getText(),
                         passwordFieldPassword.getText()); 
@@ -145,7 +141,7 @@ public class SignUp extends javax.swing.JFrame {
                         JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_buttonSignUpActionPerformed
+    }
 
     private boolean thereAreEmptyFields() {
         return textFieldUsername.getText().equals("")
@@ -163,29 +159,6 @@ public class SignUp extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -194,7 +167,6 @@ public class SignUp extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSignUp;
     private javax.swing.JComboBox<String> comboBoxRole;
     private javax.swing.Box.Filler filler1;
@@ -217,5 +189,4 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldLastName;
     private javax.swing.JTextField textFieldName;
     private javax.swing.JTextField textFieldUsername;
-    // End of variables declaration//GEN-END:variables
 }

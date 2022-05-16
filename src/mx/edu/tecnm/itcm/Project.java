@@ -13,9 +13,13 @@ public class Project {
     private Date startDate;
     private Date finishDate;
     private String description;
+    private List<Task> taskList;
 
     public Project() {
-
+        this.name = "Project name";
+        this.startDate = new Date();
+        this.finishDate = new Date();
+        this.description = description;
     }
 
     public Project(String name, Date startDate, Date finishDate, String description) {
