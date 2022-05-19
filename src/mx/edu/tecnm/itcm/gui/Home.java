@@ -1,14 +1,6 @@
 package mx.edu.tecnm.itcm.gui;
 
 import java.sql.*;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.PdfPTable;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import mx.edu.tecnm.itcm.util.DBConnection;
@@ -17,7 +9,7 @@ import mx.edu.tecnm.itcm.util.DBConnection;
  *
  * @author Manuel Avila
  */
-public class Home extends javax.swing.JFrame {
+public class Home extends JFrame {
 
     /**
      * Creates new form Home
@@ -27,21 +19,29 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void initComponents() {
+        scrollPane = new JScrollPane();
+        panel = new JPanel();
+        scrollPaneProjects = new JScrollPane();
+        tableProjects = new JTable();
+        scrollPaneTasks = new JScrollPane();
+        tableTasks = new JTable();
+        scrollPaneUsers = new JScrollPane();
+        tableUsers = new JTable();
+        buttonGenerateReport = new JButton();
+        buttonRefreshProjects = new JButton();
+        buttonRefreshTasks = new JButton();
+        buttonRefreshUsers = new JButton();
+        menuBar = new JMenuBar();
+        menuFile = new JMenu();
+        menuEdit = new JMenu();
+        menuView = new JMenu();
+        menuHelp = new JMenu();
+        menuAccount = new JMenu();
+        menuItemSignOut = new JMenuItem();
+        menuItemExit = new JMenuItem();
+        menuItemAbout = new JMenuItem();
 
-        scrollPane = new javax.swing.JScrollPane();
-        panel = new javax.swing.JPanel();
-        scrollPaneProjects = new javax.swing.JScrollPane();
-        tableProjects = new javax.swing.JTable();
-        scrollPaneTasks = new javax.swing.JScrollPane();
-        tableTasks = new javax.swing.JTable();
-        scrollPaneUsers = new javax.swing.JScrollPane();
-        tableUsers = new javax.swing.JTable();
-        buttonGenerateReport = new javax.swing.JButton();
-        buttonRefreshProjects = new javax.swing.JButton();
-        buttonRefreshTasks = new javax.swing.JButton();
-        buttonRefreshUsers = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Home");
 
         scrollPane.setPreferredSize(new java.awt.Dimension(600, 600));
@@ -199,9 +199,9 @@ public class Home extends javax.swing.JFrame {
         getContentPane().add(scrollPane, java.awt.BorderLayout.PAGE_START);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void buttonGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGenerateReportActionPerformed
+    private void buttonGenerateReportActionPerformed(java.awt.event.ActionEvent evt) {
         Document document = new Document();
         try {
             String route = System.getProperty("user.home");
@@ -210,9 +210,9 @@ public class Home extends javax.swing.JFrame {
         } catch (DocumentException | FileNotFoundException e) {
 
         }
-    }//GEN-LAST:event_buttonGenerateReportActionPerformed
+    }
 
-    private void buttonRefreshProjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshProjectsActionPerformed
+    private void buttonRefreshProjectsActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             DefaultTableModel model = new DefaultTableModel();
             tableProjects.setModel(model);
@@ -239,9 +239,9 @@ public class Home extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Ha ocurrido un error", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_buttonRefreshProjectsActionPerformed
+    }
 
-    private void buttonRefreshTasksActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshTasksActionPerformed
+    private void buttonRefreshTasksActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             DefaultTableModel model = new DefaultTableModel();
             tableTasks.setModel(model);
@@ -270,9 +270,9 @@ public class Home extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Ha ocurrido un error", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_buttonRefreshTasksActionPerformed
+    }
 
-    private void buttonRefreshUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRefreshUsersActionPerformed
+    private void buttonRefreshUsersActionPerformed(java.awt.event.ActionEvent evt) {
         try {
             DefaultTableModel model = new DefaultTableModel();
             tableUsers.setModel(model);
@@ -298,35 +298,12 @@ public class Home extends javax.swing.JFrame {
         } catch (SQLException exception) {
             JOptionPane.showMessageDialog(null, exception.getMessage(), "Ha ocurrido un error", JOptionPane.INFORMATION_MESSAGE);
         }
-    }//GEN-LAST:event_buttonRefreshUsersActionPerformed
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -336,18 +313,26 @@ public class Home extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonGenerateReport;
-    private javax.swing.JButton buttonRefreshProjects;
-    private javax.swing.JButton buttonRefreshTasks;
-    private javax.swing.JButton buttonRefreshUsers;
-    private javax.swing.JPanel panel;
-    private javax.swing.JScrollPane scrollPane;
-    private javax.swing.JScrollPane scrollPaneProjects;
-    private javax.swing.JScrollPane scrollPaneTasks;
-    private javax.swing.JScrollPane scrollPaneUsers;
-    private javax.swing.JTable tableProjects;
-    private javax.swing.JTable tableTasks;
-    private javax.swing.JTable tableUsers;
-    // End of variables declaration//GEN-END:variables
+    private JButton buttonGenerateReport;
+    private JButton buttonRefreshProjects;
+    private JButton buttonRefreshTasks;
+    private JButton buttonRefreshUsers;
+    private JPanel panel;
+    private JScrollPane scrollPane;
+    private JScrollPane scrollPaneProjects;
+    private JScrollPane scrollPaneTasks;
+    private JScrollPane scrollPaneUsers;
+    private JTable tableProjects;
+    private JTable tableTasks;
+    private JTable tableUsers;
+    private JMenuBar menuBar;
+    private JMenu menuFile;
+    private JMenu menuEdit;
+    private JMenu menuView;
+    private JMenu menuHelp;
+    private JMenu menuAccount;
+    private JMenuItem menuItemAbout;
+    private JMenuItem menuItemSignOut;
+    private JMenuItem menuItemExit;
+    private JScrollPane scrollPane;
 }
