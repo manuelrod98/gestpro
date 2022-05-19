@@ -1,2 +1,2 @@
-# GestPro-v5
-Proyecto para la asignatura de ingenieria de software
+# GestPro
+Proyecto (administrador de proyectos de software) para la asignatura de ingenieria de software.
