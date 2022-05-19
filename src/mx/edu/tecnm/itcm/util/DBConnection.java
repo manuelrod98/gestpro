@@ -15,7 +15,8 @@ public class DBConnection {
     public static Connection connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/maindb", "root", "SAdi6j8SgWJW(@f");
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/maindb", "root", 
+            "password");
             JOptionPane.showMessageDialog(null, "Conexion establecida", "Conexion establecida correctamente", JOptionPane.INFORMATION_MESSAGE);
         } catch (ClassNotFoundException | SQLException exception) {
             JOptionPane.showMessageDialog(null, "Ha ocurrido un error", exception.getMessage(), JOptionPane.ERROR_MESSAGE);
